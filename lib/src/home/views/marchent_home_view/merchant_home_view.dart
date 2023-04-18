@@ -1,16 +1,16 @@
 import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/enum/order_type.dart';
-import 'package:gharelu/src/core/extensions/context_extension.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/routes/app_router.dart';
-import 'package:gharelu/src/core/theme/app_colors.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/providers/product_provider.dart';
-import 'package:gharelu/src/home/providers/service_category_provider.dart';
-import 'package:gharelu/src/home/widgets/search_services.dart';
-import 'package:gharelu/src/home/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/core/enum/order_type.dart';
+import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/routes/app_router.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/providers/product_provider.dart';
+import 'package:raam_dhulaai/src/home/providers/service_category_provider.dart';
+import 'package:raam_dhulaai/src/home/widgets/search_services.dart';
+import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MerchantHomeView extends ConsumerStatefulWidget {
@@ -38,7 +38,7 @@ class _MerchantHomeViewState extends ConsumerState<MerchantHomeView> {
           SliverAppBar(
             backgroundColor: AppColors.primaryColor,
             title: const Text(
-              'Gharelu App',
+              'raam_dhulaai App',
               style: TextStyle(color: AppColors.whiteColor),
             ),
             expandedHeight: 150.h,

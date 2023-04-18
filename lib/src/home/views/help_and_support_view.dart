@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/constant/app_constant.dart';
-import 'package:gharelu/src/core/utility/contact_utility.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/core/constant/app_constant.dart';
+import 'package:raam_dhulaai/src/core/utility/contact_utility.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
 
 class HelpAndSupportView extends StatelessWidget {
   const HelpAndSupportView({Key? key}) : super(key: key);

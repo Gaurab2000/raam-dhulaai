@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/extensions/context_extension.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/theme/app_colors.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/providers/get_merchant_bookings_provider.dart';
-import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/providers/get_merchant_bookings_provider.dart';
+import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
 
 class MerchantBookingsView extends HookWidget {
   const MerchantBookingsView({Key? key}) : super(key: key);
@@ -19,9 +19,7 @@ class MerchantBookingsView extends HookWidget {
     return ScaffoldWrapper(
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
-        title: const Text('Your Bookings', style: TextStyle(
-          color: AppColors.whiteColor
-        )),
+        title: const Text('Your Bookings', style: TextStyle(color: AppColors.whiteColor)),
         bottom: TabBar(
           splashFactory: NoSplash.splashFactory,
           automaticIndicatorColorAdjustment: true,

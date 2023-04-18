@@ -1,5 +1,5 @@
-import 'package:gharelu/src/core/entity/cancellation_reason_entity.dart';
-import 'package:gharelu/src/core/entity/help_and_support_entity.dart';
+import 'package:raam_dhulaai/src/core/entity/cancellation_reason_entity.dart';
+import 'package:raam_dhulaai/src/core/entity/help_and_support_entity.dart';
 
 class AppConstant {
   const AppConstant._();

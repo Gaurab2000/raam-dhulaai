@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/assets/assets.gen.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/core/assets/assets.gen.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
 import 'package:lottie/lottie.dart';
 
 class NoDataFound extends StatelessWidget {

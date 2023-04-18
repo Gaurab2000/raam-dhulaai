@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/assets/assets.gen.dart';
-import 'package:gharelu/src/core/extensions/context_extension.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/routes/app_router.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
-import 'package:gharelu/src/core/theme/app_colors.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/models/product_model.dart';
-import 'package:gharelu/src/home/providers/create_product_provider.dart';
-import 'package:gharelu/src/home/providers/forms/create_product_form_provider.dart';
-import 'package:gharelu/src/home/providers/product_provider.dart';
-import 'package:gharelu/src/home/widgets/bottom_sheet/bottom_sheet.dart';
-import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:raam_dhulaai/src/core/assets/assets.gen.dart';
+import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/routes/app_router.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/models/product_model.dart';
+import 'package:raam_dhulaai/src/home/providers/create_product_provider.dart';
+import 'package:raam_dhulaai/src/home/providers/forms/create_product_form_provider.dart';
+import 'package:raam_dhulaai/src/home/providers/product_provider.dart';
+import 'package:raam_dhulaai/src/home/widgets/bottom_sheet/bottom_sheet.dart';
+import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
 
 class CreateProductView extends HookConsumerWidget {
   const CreateProductView({Key? key, this.editProduct}) : super(key: key);
@@ -64,7 +64,7 @@ class CreateProductView extends HookConsumerWidget {
             ?..innerRouterOf<TabsRouter>(MerchantDashboardRouter.name)?.setActiveIndex(0)
             ..navigate(const MerchantHomeRoute());
           ref.refresh(productStateProvider.notifier).getProducts(merchantOnly: true);
-          context.showSnackbar(message: editProduct == null ? 'Product Created!': 'Product Updated');
+          context.showSnackbar(message: editProduct == null ? 'Product Created!' : 'Product Updated');
         },
         error: (message) => context.showErorDialog(message: message),
       );
@@ -114,7 +114,7 @@ class CreateProductView extends HookConsumerWidget {
           children: [
             20.verticalSpace,
             Text(
-              'Let\'s start your Product to Gharelu App. Complete basic Information and you are Ready to Accept Offers',
+              'Let\'s start your Product to raam_dhulaai App. Complete basic Information and you are Ready to Accept Offers',
               style: AppStyles.text14PxMedium.copyWith(color: AppColors.softBlack.withOpacity(.5)),
             ),
             20.verticalSpace,

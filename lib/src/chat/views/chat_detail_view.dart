@@ -5,22 +5,22 @@ import 'package:chat_bubbles/bubbles/bubble_special_two.dart';
 import 'package:chat_bubbles/message_bars/message_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/auth/models/custom_user_model.dart';
-import 'package:gharelu/src/chat/models/message_model.dart';
-import 'package:gharelu/src/chat/providers/get_message_provider.dart';
-import 'package:gharelu/src/chat/providers/send_message_provider.dart';
-import 'package:gharelu/src/core/assets/assets.gen.dart';
-import 'package:gharelu/src/core/constant/app_constant.dart';
-import 'package:gharelu/src/core/extensions/context_extension.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/providers/firbease_provider.dart';
-import 'package:gharelu/src/core/theme/app_colors.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/models/product_model.dart';
-import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:raam_dhulaai/src/auth/models/custom_user_model.dart';
+import 'package:raam_dhulaai/src/chat/models/message_model.dart';
+import 'package:raam_dhulaai/src/chat/providers/get_message_provider.dart';
+import 'package:raam_dhulaai/src/chat/providers/send_message_provider.dart';
+import 'package:raam_dhulaai/src/core/assets/assets.gen.dart';
+import 'package:raam_dhulaai/src/core/constant/app_constant.dart';
+import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/providers/firbease_provider.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/models/product_model.dart';
+import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
 
 class ChatDetailView extends StatefulHookConsumerWidget {
   const ChatDetailView({
@@ -85,7 +85,8 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                   (widget.product?.name ?? ''),
                   style: AppStyles.text18PxBold,
                 ),
-                Text('${isMerchant ? (widget.user?.name ?? '') : (widget.merchant?.name ?? '')}', style: AppStyles.text12PxMedium.midGrey)
+                Text('${isMerchant ? (widget.user?.name ?? '') : (widget.merchant?.name ?? '')}',
+                    style: AppStyles.text12PxMedium.midGrey)
               ],
             ).expanded(),
           ],
@@ -104,7 +105,8 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                           if (data.isEmpty) {
                             return SizedBox(
                               child: NoDataFound(
-                                title: 'Start Conversation with ${isMerchant ? '${widget.user?.name}' : '${widget.merchant?.name}'}',
+                                title:
+                                    'Start Conversation with ${isMerchant ? '${widget.user?.name}' : '${widget.merchant?.name}'}',
                                 onRefresh: () {
                                   ref.read(getMessagesNotifierProvider(roomId));
                                 },
@@ -131,7 +133,8 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
                                 tail: true,
                                 color: userId == message.senderId ? AppColors.primaryColor : const Color(0xFFE8E8EE),
                                 delivered: false,
-                                textStyle: userId == message.senderId ? AppStyles.text14PxRegular.white : const TextStyle(),
+                                textStyle:
+                                    userId == message.senderId ? AppStyles.text14PxRegular.white : const TextStyle(),
                               ).px(10).py(10);
                             },
                           ).expanded();
@@ -208,4 +211,4 @@ class _ChatDetailViewState extends ConsumerState<ChatDetailView> {
     );
   }
 }
-// 
+//

@@ -3,27 +3,25 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/assets/assets.gen.dart';
-import 'package:gharelu/src/core/extensions/context_extension.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/routes/app_router.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
-import 'package:gharelu/src/core/theme/theme.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/data_source/booking_data_source.dart';
-import 'package:gharelu/src/home/models/service_model.dart';
-import 'package:gharelu/src/home/providers/cart_provider.dart';
-import 'package:gharelu/src/home/providers/get_user_bookings.dart';
-import 'package:gharelu/src/home/providers/make_booking_provider.dart';
-import 'package:gharelu/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
+import 'package:raam_dhulaai/src/core/assets/assets.gen.dart';
+import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/routes/app_router.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/theme/theme.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/data_source/booking_data_source.dart';
+import 'package:raam_dhulaai/src/home/models/service_model.dart';
+import 'package:raam_dhulaai/src/home/providers/cart_provider.dart';
+import 'package:raam_dhulaai/src/home/providers/get_user_bookings.dart';
+import 'package:raam_dhulaai/src/home/providers/make_booking_provider.dart';
+import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
 
 class CheckoutView extends HookConsumerWidget {
-  const CheckoutView(
-      {Key? key, required this.date, required this.time, required this.service})
-      : super(key: key);
+  const CheckoutView({Key? key, required this.date, required this.time, required this.service}) : super(key: key);
   final String date;
   final String time;
   final ServiceModel service;
@@ -38,11 +36,9 @@ class CheckoutView extends HookConsumerWidget {
           context.showSnackbar(message: 'Booking Confirm');
           ref.read(getUserBookingsNotifierProvider.notifier).getBookings();
           context.router.root.innerRouterOf(DashboardRouter.name)
-            ?..innerRouterOf<TabsRouter>(DashboardRouter.name)
-                ?.setActiveIndex(1)
+            ?..innerRouterOf<TabsRouter>(DashboardRouter.name)?.setActiveIndex(1)
             ..navigate(const AppointmentRouter());
-          context.router
-              .popUntil((route) => route.settings.name == DashboardRouter.name);
+          context.router.popUntil((route) => route.settings.name == DashboardRouter.name);
         },
       );
     });
@@ -74,8 +70,7 @@ class CheckoutView extends HookConsumerWidget {
                         title: 'Pay with Khalti',
                         onPressed: () async {
                           final config = PaymentConfig(
-                            amount: ((_cart.totalPrice + 50) *
-                                100), // Amount should be in paisa
+                            amount: ((_cart.totalPrice + 50) * 100), // Amount should be in paisa
                             productIdentity: _cart.products.first.serviceId,
                             productName: '${_cart.products.first.categoryId}',
                           );
@@ -87,9 +82,7 @@ class CheckoutView extends HookConsumerWidget {
                             ],
                             onSuccess: (value) async {
                               for (var i = 0; i < _cart.products.length; i++) {
-                                ref
-                                    .read(createBookingProvider.notifier)
-                                    .createBookings(
+                                ref.read(createBookingProvider.notifier).createBookings(
                                       booking: _cart.booking(
                                         bookingDate: date,
                                         time: time,
@@ -112,8 +105,7 @@ class CheckoutView extends HookConsumerWidget {
                         title: 'Pay with eSewa',
                         icon: Assets.images.esewaLogo.image(height: 23.h),
                         onPressed: () {
-                          context.showSnackbar(
-                              message: 'Unable to Pay with eSEWA');
+                          context.showSnackbar(message: 'Unable to Pay with eSEWA');
                         },
                         titleColor: const Color(0xff60BB47),
                       ),

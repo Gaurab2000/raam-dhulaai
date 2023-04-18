@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gharelu/src/core/providers/firbease_provider.dart';
-import 'package:gharelu/src/core/routes/app_router.dart';
-import 'package:gharelu/src/core/theme/app_colors.dart';
-import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
+import 'package:raam_dhulaai/src/core/providers/firbease_provider.dart';
+import 'package:raam_dhulaai/src/core/routes/app_router.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/home/providers/get_user_info_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MerchantDashboardView extends StatefulHookConsumerWidget {

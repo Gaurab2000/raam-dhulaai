@@ -2,15 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/auth/providers/delete_user_provider.dart';
-import 'package:gharelu/src/core/extensions/context_extension.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/routes/app_router.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
-import 'package:gharelu/src/core/theme/app_colors.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/providers/get_user_info_provider.dart';
+import 'package:raam_dhulaai/src/auth/providers/delete_user_provider.dart';
+import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/routes/app_router.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/providers/get_user_info_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class DeleteAccountBottomsheet extends HookWidget {
@@ -69,7 +69,7 @@ class DeleteAccountBottomsheet extends HookWidget {
                         return Column(
                           children: [
                             Text(
-                              'Please Enter your password to Delete your Account at Gharelu App',
+                              'Please Enter your password to Delete your Account at raam_dhulaai App',
                               style: AppStyles.text14PxRegular.copyWith(
                                 color: AppColors.softBlack.withOpacity(.6),
                               ),
@@ -88,7 +88,7 @@ class DeleteAccountBottomsheet extends HookWidget {
                         return Column(
                           children: [
                             Text(
-                              'We are very sad to know, you are leaving Gharelu App. We will Appricate if you leave Feedback or any Suugestion to Improve.',
+                              'We are very sad to know, you are leaving raam_dhulaai App. We will Appricate if you leave Feedback or any Suugestion to Improve.',
                               style: AppStyles.text14PxRegular.copyWith(
                                 color: AppColors.softBlack.withOpacity(.6),
                               ),

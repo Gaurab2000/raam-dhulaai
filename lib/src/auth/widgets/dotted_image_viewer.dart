@@ -2,12 +2,11 @@ import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/theme/theme.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/theme/theme.dart';
 
 class DottedImageViewer extends StatelessWidget {
-  const DottedImageViewer({Key? key, required this.image, this.onDelete})
-      : super(key: key);
+  const DottedImageViewer({Key? key, required this.image, this.onDelete}) : super(key: key);
   final String image;
   final VoidCallback? onDelete;
 

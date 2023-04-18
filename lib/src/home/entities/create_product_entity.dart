@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gharelu/src/core/validations/field.dart';
-import 'package:gharelu/src/home/models/category_model.dart';
-import 'package:gharelu/src/home/models/service_model.dart';
+import 'package:raam_dhulaai/src/core/validations/field.dart';
+import 'package:raam_dhulaai/src/home/models/category_model.dart';
+import 'package:raam_dhulaai/src/home/models/service_model.dart';
 
 part 'create_product_entity.freezed.dart';
 

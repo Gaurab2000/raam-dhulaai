@@ -5,13 +5,11 @@ import 'package:gharelu/src/home/data_source/booking_data_source.dart';
 import 'package:gharelu/src/home/models/booking_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-part 'state/get_merchant_bookings_state.dart';
 part 'get_merchant_bookings_provider.freezed.dart';
+part 'state/get_merchant_bookings_statengs_provider.freezed.dart';
 
-class GetMerchantBookingsNotifier
-    extends StateNotifier<GetMerchantBookingsState> {
-  GetMerchantBookingsNotifier(this._dataSource)
-      : super(const GetMerchantBookingsState.initial());
+class GetMerchantBookingsNotifier extends StateNotifier<GetMerchantBookingsState> {
+  GetMerchantBookingsNotifier(this._dataSource) : super(const GetMerchantBookingsState.initial());
   final BookingDataSource _dataSource;
 
   Future<void> getMerchantBookings() async {
@@ -19,16 +17,14 @@ class GetMerchantBookingsNotifier
     final response = await _dataSource.getMerchantBookings();
     state = response.fold(
       (error) => error.when(
-        serverError: (message) =>
-            GetMerchantBookingsState.error(message: message),
+        serverError: (message) => GetMerchantBookingsState.error(message: message),
         noInternet: () => const GetMerchantBookingsState.noInternet(),
       ),
       (response) {
         final previous = <BookingModel>[];
         final upcoming = <BookingModel>[];
         for (var booking in response) {
-          if (booking.orderType == OrderType.Completed ||
-              booking.orderType == OrderType.Cancelled) {
+          if (booking.orderType == OrderType.Completed || booking.orderType == OrderType.Cancelled) {
             previous.add(booking);
           } else {
             upcoming.add(booking);
@@ -43,16 +39,13 @@ class GetMerchantBookingsNotifier
     );
   }
 
-  Future<void> updateBookings(
-      {required String bookingId, required OrderType orderType}) async {
+  Future<void> updateBookings({required String bookingId, required OrderType orderType}) async {
     state = const GetMerchantBookingsState.loading();
-    final response = await _dataSource.updateBookings(
-        bookingId: bookingId, orderType: orderType);
+    final response = await _dataSource.updateBookings(bookingId: bookingId, orderType: orderType);
     await getMerchantBookings();
     state = response.fold(
       (error) => error.when(
-        serverError: (message) =>
-            GetMerchantBookingsState.error(message: message),
+        serverError: (message) => GetMerchantBookingsState.error(message: message),
         noInternet: () => const GetMerchantBookingsState.noInternet(),
       ),
       (response) {
@@ -66,8 +59,8 @@ class GetMerchantBookingsNotifier
   }
 }
 
-final getMerchantBookingsStateProvider = StateNotifierProvider<
-    GetMerchantBookingsNotifier, GetMerchantBookingsState>((ref) {
+final getMerchantBookingsStateProvider =
+    StateNotifierProvider<GetMerchantBookingsNotifier, GetMerchantBookingsState>((ref) {
   return GetMerchantBookingsNotifier(
     ref.read(bookingDataSourceProvider),
   )..getMerchantBookings();

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gharelu/src/core/validations/field.dart';
+import 'package:raam_dhulaai/src/core/validations/field.dart';
 import 'package:velocity_x/velocity_x.dart';
 part 'user_signup_entities.freezed.dart';
 

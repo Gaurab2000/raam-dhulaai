@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gharelu/src/auth/entities/merchant_signup_entities.dart';
-import 'package:gharelu/src/auth/providers/forms/signup/merchant_signup_form_state.dart';
-import 'package:gharelu/src/core/validations/field.dart';
+import 'package:raam_dhulaai/src/auth/entities/merchant_signup_entities.dart';
+import 'package:raam_dhulaai/src/auth/providers/forms/signup/merchant_signup_form_state.dart';
+import 'package:raam_dhulaai/src/core/validations/field.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class MerchantSignupFormProvider

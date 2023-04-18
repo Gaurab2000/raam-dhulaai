@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
 
 class MerchantProfileView extends StatelessWidget {
   const MerchantProfileView({Key? key}) : super(key: key);

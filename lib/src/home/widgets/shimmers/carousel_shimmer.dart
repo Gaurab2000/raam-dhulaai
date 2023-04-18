@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gharelu/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CarouselShimmer extends StatelessWidget {

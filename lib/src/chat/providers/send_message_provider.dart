@@ -1,6 +1,6 @@
-import 'package:gharelu/src/chat/data_source/chat_data_source.dart';
-import 'package:gharelu/src/chat/models/message_model.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/chat/data_source/chat_data_source.dart';
+import 'package:raam_dhulaai/src/chat/models/message_model.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 

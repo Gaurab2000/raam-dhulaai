@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/extensions/context_extension.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/routes/app_router.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
-import 'package:gharelu/src/core/theme/app_colors.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/providers/delete_product_provider.dart';
-import 'package:gharelu/src/home/providers/product_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/routes/app_router.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/providers/delete_product_provider.dart';
+import 'package:raam_dhulaai/src/home/providers/product_provider.dart';
 
 class DeleteProductBottomsheet extends ConsumerWidget {
-  const DeleteProductBottomsheet({Key? key, required this.productId})
-      : super(key: key);
+  const DeleteProductBottomsheet({Key? key, required this.productId}) : super(key: key);
 
   final String productId;
 
@@ -24,9 +23,7 @@ class DeleteProductBottomsheet extends ConsumerWidget {
         orElse: () => null,
         success: (data) {
           context.showSnackbar(message: 'Product Deleted');
-          ref
-              .read(productStateProvider.notifier)
-              .getProducts(merchantOnly: true);
+          ref.read(productStateProvider.notifier).getProducts(merchantOnly: true);
           context.router.popUntil(
             (route) => route.settings.name == MerchantDashboardRouter.name,
           );
@@ -65,9 +62,7 @@ class DeleteProductBottomsheet extends ConsumerWidget {
                         orElse: () => false,
                         loading: () => true,
                       ),
-                  onPressed: () => ref
-                      .read(deleteProductNotifierProvider.notifier)
-                      .deleteProduct(productId),
+                  onPressed: () => ref.read(deleteProductNotifierProvider.notifier).deleteProduct(productId),
                 )),
               ],
             ),
@@ -79,6 +74,5 @@ class DeleteProductBottomsheet extends ConsumerWidget {
   }
 
   static Future<void> show(BuildContext context, {required String productId}) =>
-      showAppBottomSheet(
-          context, DeleteProductBottomsheet(productId: productId));
+      showAppBottomSheet(context, DeleteProductBottomsheet(productId: productId));
 }

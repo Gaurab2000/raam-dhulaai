@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:dio/dio.dart';
-import 'package:gharelu/src/core/errors/app_error.dart';
+import 'package:raam_dhulaai/src/core/errors/app_error.dart';
 
 abstract class _LocationDataSource {
   Future<Either<AppError, String>> getLocationString({

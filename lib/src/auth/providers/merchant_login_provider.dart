@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gharelu/src/auth/data_source/auth_remote_source.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/auth/data_source/auth_remote_source.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
 
 class MerchantLoginProvider extends StateNotifier<AppState<User?>> {
   MerchantLoginProvider(this._remoteSource)

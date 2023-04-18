@@ -2,16 +2,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/theme/app_colors.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
 
 class IncrementAndDecrement extends StatelessWidget {
-  const IncrementAndDecrement(
-      {Key? key,
-      required this.count,
-      required this.onIncrement,
-      required this.onDecrement})
+  const IncrementAndDecrement({Key? key, required this.count, required this.onIncrement, required this.onDecrement})
       : super(key: key);
   final int count;
   final VoidCallback onIncrement;

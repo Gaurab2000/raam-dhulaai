@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/theme/theme.dart';
-
+import 'package:raam_dhulaai/src/core/theme/theme.dart';
 
 class GradientCircle extends StatelessWidget {
   const GradientCircle({

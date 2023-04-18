@@ -1,5 +1,5 @@
-import 'package:gharelu/src/auth/data_source/auth_remote_source.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/auth/data_source/auth_remote_source.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class LogoutStateNotifier extends StateNotifier<AppState<bool>> {

@@ -2,18 +2,32 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/enum/order_type.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/theme/app_colors.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/models/booking_model.dart';
-import 'package:gharelu/src/home/models/product_model.dart';
-import 'package:gharelu/src/home/widgets/bottom_sheet/bottom_sheet.dart';
-import 'package:gharelu/src/home/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/core/enum/order_type.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/models/booking_model.dart';
+import 'package:raam_dhulaai/src/home/models/product_model.dart';
+import 'package:raam_dhulaai/src/home/widgets/bottom_sheet/bottom_sheet.dart';
+import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
 
 class ProductTile extends StatelessWidget {
-  ProductTile({Key? key, required this.image, required this.name, this.description, required this.price, this.max = 10, this.itemInCart = false, required this.onButtomPressed, this.orderDetails, this.status, this.booking, this.buttonTitle, required this.id}) : super(key: key) {
+  ProductTile(
+      {Key? key,
+      required this.image,
+      required this.name,
+      this.description,
+      required this.price,
+      this.max = 10,
+      this.itemInCart = false,
+      required this.onButtomPressed,
+      this.orderDetails,
+      this.status,
+      this.booking,
+      this.buttonTitle,
+      required this.id})
+      : super(key: key) {
     if (status != null && booking == null) {
       throw Exception('if status is provided, we need product too');
     }

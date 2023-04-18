@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gharelu/src/auth/models/custom_user_model.dart';
-import 'package:gharelu/src/core/enum/order_type.dart';
-import 'package:gharelu/src/home/models/product_model.dart';
+import 'package:raam_dhulaai/src/auth/models/custom_user_model.dart';
+import 'package:raam_dhulaai/src/core/enum/order_type.dart';
+import 'package:raam_dhulaai/src/home/models/product_model.dart';
 
 part 'booking_model.freezed.dart';
 part 'booking_model.g.dart';
@@ -31,6 +31,5 @@ class BookingModel with _$BookingModel {
     @Default(OrderType.Pending) OrderType orderType,
   }) = _BookingModel;
 
-  factory BookingModel.fromJson(Map<String, dynamic> json) =>
-      _$BookingModelFromJson(json);
+  factory BookingModel.fromJson(Map<String, dynamic> json) => _$BookingModelFromJson(json);
 }

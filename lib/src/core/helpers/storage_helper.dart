@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gharelu/src/core/providers/firbease_provider.dart';
+import 'package:raam_dhulaai/src/core/providers/firbease_provider.dart';
 
 class StorageHelper {
   const StorageHelper._();

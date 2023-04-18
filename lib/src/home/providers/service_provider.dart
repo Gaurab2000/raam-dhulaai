@@ -1,13 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
-import 'package:gharelu/src/home/data_source/service_data_source.dart';
-import 'package:gharelu/src/home/models/category_model.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/home/data_source/service_data_source.dart';
+import 'package:raam_dhulaai/src/home/models/category_model.dart';
 
 class CategoriesState extends StateNotifier<AppState<List<CategoryModel>>> {
-  CategoriesState(this._remoteSource)
-      : super(const AppState<List<CategoryModel>>.initial());
+  CategoriesState(this._remoteSource) : super(const AppState<List<CategoryModel>>.initial());
   final ServiceRemoteSource _remoteSource;
 
   Future<void> getServices() async {
@@ -15,8 +14,7 @@ class CategoriesState extends StateNotifier<AppState<List<CategoryModel>>> {
     final response = await _remoteSource.getCategories();
     state = response.fold(
       (error) => error.when(
-        serverError: (message) =>
-            AppState<List<CategoryModel>>.error(message: message),
+        serverError: (message) => AppState<List<CategoryModel>>.error(message: message),
         noInternet: () => const AppState<List<CategoryModel>>.noInternet(),
       ),
       (response) => AppState.success(data: response),
@@ -25,8 +23,7 @@ class CategoriesState extends StateNotifier<AppState<List<CategoryModel>>> {
   }
 }
 
-final categoriesStateProvider =
-    StateNotifierProvider<CategoriesState, AppState<List<CategoryModel>>>(
+final categoriesStateProvider = StateNotifierProvider<CategoriesState, AppState<List<CategoryModel>>>(
   (ref) => CategoriesState(
     ref.read(serviceRemoteSourceProvider),
   )..getServices(),

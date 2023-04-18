@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gharelu/src/core/enum/auth_type.dart';
+import 'package:raam_dhulaai/src/core/enum/auth_type.dart';
 
 part 'custom_user_model.g.dart';
 part 'custom_user_model.freezed.dart';

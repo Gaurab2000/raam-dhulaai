@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/models/category_model.dart';
-import 'package:gharelu/src/home/models/service_model.dart';
-import 'package:gharelu/src/home/providers/service_category_provider.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/models/category_model.dart';
+import 'package:raam_dhulaai/src/home/models/service_model.dart';
+import 'package:raam_dhulaai/src/home/providers/service_category_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProductCategoryBottomsheet extends StatefulHookConsumerWidget {

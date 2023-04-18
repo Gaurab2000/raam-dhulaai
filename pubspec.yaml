@@ -1,4 +1,4 @@
-name: gharelu
+name: raam_dhulaai
 description: A new Flutter project.
 
 
@@ -82,9 +82,9 @@ flutter:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/gharelu_logo.jpg"
+  image_path: "assets/images/raam_dhulaai_logo.jpg"
   min_sdk_android: 21
 
 flutter_native_splash:
   color: '#7210FF'
-  image: "assets/images/gharelu_logo.jpg"
+  image: "assets/images/raam_dhulaai_logo.jpg"

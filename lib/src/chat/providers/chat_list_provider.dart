@@ -1,9 +1,9 @@
-// import 'package:gharelu/src/auth/models/custom_user_model.dart';
-// import 'package:gharelu/src/chat/data_source/chat_data_source.dart';
-// import 'package:gharelu/src/chat/models/room_model.dart';
-// import 'package:gharelu/src/core/constant/app_constant.dart';
-// import 'package:gharelu/src/core/extensions/list_extension.dart';
-// import 'package:gharelu/src/core/providers/firbease_provider.dart';
+// import 'package:raam_dhulaai/src/auth/models/custom_user_model.dart';
+// import 'package:raam_dhulaai/src/chat/data_source/chat_data_source.dart';
+// import 'package:raam_dhulaai/src/chat/models/room_model.dart';
+// import 'package:raam_dhulaai/src/core/constant/app_constant.dart';
+// import 'package:raam_dhulaai/src/core/extensions/list_extension.dart';
+// import 'package:raam_dhulaai/src/core/providers/firbease_provider.dart';
 // import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // final getChatListProvider = StreamProvider.family<List<RoomModel>, bool>((ref, isMerchant) {
@@ -34,13 +34,13 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gharelu/src/chat/data_source/chat_data_source.dart';
-import 'package:gharelu/src/chat/models/message_model.dart';
-import 'package:gharelu/src/chat/models/room_model.dart';
-import 'package:gharelu/src/core/constant/app_constant.dart';
-import 'package:gharelu/src/core/extensions/list_extension.dart';
-import 'package:gharelu/src/core/providers/firbease_provider.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/chat/data_source/chat_data_source.dart';
+import 'package:raam_dhulaai/src/chat/models/message_model.dart';
+import 'package:raam_dhulaai/src/chat/models/room_model.dart';
+import 'package:raam_dhulaai/src/core/constant/app_constant.dart';
+import 'package:raam_dhulaai/src/core/extensions/list_extension.dart';
+import 'package:raam_dhulaai/src/core/providers/firbease_provider.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ChatListNotifier extends StateNotifier<AppState<List<RoomModel>>> {

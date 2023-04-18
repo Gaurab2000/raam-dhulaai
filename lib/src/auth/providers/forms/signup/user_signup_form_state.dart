@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gharelu/src/auth/entities/user_signup_entities.dart';
+import 'package:raam_dhulaai/src/auth/entities/user_signup_entities.dart';
 
 part 'user_signup_form_state.freezed.dart';
 

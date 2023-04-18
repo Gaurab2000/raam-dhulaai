@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/auth/providers/forms/signup/user_signup_form_provider.dart';
-import 'package:gharelu/src/auth/providers/user_signup_provider.dart';
-import 'package:gharelu/src/core/extensions/context_extension.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/routes/app_router.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:raam_dhulaai/src/auth/providers/forms/signup/user_signup_form_provider.dart';
+import 'package:raam_dhulaai/src/auth/providers/user_signup_provider.dart';
+import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/routes/app_router.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
 
 class UserSignupView extends HookConsumerWidget {
   const UserSignupView({Key? key}) : super(key: key);
@@ -59,40 +59,27 @@ class UserSignupView extends HookConsumerWidget {
                 title: 'Email',
                 controller: _email,
                 textInputType: TextInputType.emailAddress,
-                onChanged: (email) =>
-                    ref.read(userSignupFormProvider.notifier).setEmail(email),
-                error:
-                    ref.watch(userSignupFormProvider).form.email.errorMessage,
+                onChanged: (email) => ref.read(userSignupFormProvider.notifier).setEmail(email),
+                error: ref.watch(userSignupFormProvider).form.email.errorMessage,
               ),
               20.verticalSpace,
               CustomTextField(
                 title: 'Password',
-                onChanged: (password) => ref
-                    .read(userSignupFormProvider.notifier)
-                    .setPassword(password),
+                onChanged: (password) => ref.read(userSignupFormProvider.notifier).setPassword(password),
                 controller: _password,
                 isPassword: true,
-                error: ref
-                    .watch(userSignupFormProvider)
-                    .form
-                    .password
-                    .errorMessage,
+                error: ref.watch(userSignupFormProvider).form.password.errorMessage,
                 textInputType: TextInputType.visiblePassword,
               ),
               20.verticalSpace,
               CustomTextField(
-                onChanged: (confirmPassword) => ref
-                    .read(userSignupFormProvider.notifier)
-                    .setConfirmPassword(confirmPassword),
+                onChanged: (confirmPassword) =>
+                    ref.read(userSignupFormProvider.notifier).setConfirmPassword(confirmPassword),
                 isPassword: true,
                 title: 'Confirm Password',
                 textInputType: TextInputType.visiblePassword,
                 controller: _confirmPassword,
-                error: ref
-                    .watch(userSignupFormProvider)
-                    .form
-                    .confirmPassword
-                    .errorMessage,
+                error: ref.watch(userSignupFormProvider).form.confirmPassword.errorMessage,
               ),
               20.verticalSpace,
               Text(
@@ -106,9 +93,7 @@ class UserSignupView extends HookConsumerWidget {
                     onPressed: () => context.router.push(MapPickerRoute(
                       onSuccess: (location, placeId, latlng) {
                         context.router.pop();
-                        ref
-                            .read(userSignupFormProvider.notifier)
-                            .setLocation(location, placeId, latlng);
+                        ref.read(userSignupFormProvider.notifier).setLocation(location, placeId, latlng);
                       },
                     )),
                   ),
@@ -132,11 +117,7 @@ class UserSignupView extends HookConsumerWidget {
                         name: _name.text,
                         email: _email.text,
                         password: _password.text,
-                        location: ref
-                            .watch(userSignupFormProvider)
-                            .form
-                            .location
-                            .value,
+                        location: ref.watch(userSignupFormProvider).form.location.value,
                       ),
                 ),
               ),
@@ -149,9 +130,7 @@ class UserSignupView extends HookConsumerWidget {
                     'Already have account? ',
                     style: AppStyles.text14PxRegular.midGrey,
                   ),
-                  TextButton(
-                      onPressed: () => context.router.pop(),
-                      child: const Text('Login')),
+                  TextButton(onPressed: () => context.router.pop(), child: const Text('Login')),
                 ],
               ),
             ],

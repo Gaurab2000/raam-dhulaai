@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
-import 'package:gharelu/src/home/data_source/service_data_source.dart';
-import 'package:gharelu/src/home/models/product_model.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/home/data_source/service_data_source.dart';
+import 'package:raam_dhulaai/src/home/models/product_model.dart';
 
 class ProductState extends StateNotifier<AppState<List<ProductModel>>> {
   ProductState(this._remoteSource) : super(const AppState<List<ProductModel>>.initial());

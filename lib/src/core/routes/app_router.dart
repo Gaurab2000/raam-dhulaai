@@ -3,13 +3,13 @@ export 'package:auto_route/auto_route.dart';
 export 'app_router.gr.dart';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:gharelu/src/app/views/views.dart';
-import 'package:gharelu/src/auth/view/pages.dart';
-import 'package:gharelu/src/chat/views/chat_list_view.dart';
-import 'package:gharelu/src/home/views/marchent_home_view/merchant_bookings_view.dart';
-import 'package:gharelu/src/home/views/marchent_home_view/pages.dart';
-import 'package:gharelu/src/home/views/pages.dart';
-import 'package:gharelu/src/map_view/views/views.dart';
+import 'package:raam_dhulaai/src/app/views/views.dart';
+import 'package:raam_dhulaai/src/auth/view/pages.dart';
+import 'package:raam_dhulaai/src/chat/views/chat_list_view.dart';
+import 'package:raam_dhulaai/src/home/views/marchent_home_view/merchant_bookings_view.dart';
+import 'package:raam_dhulaai/src/home/views/marchent_home_view/pages.dart';
+import 'package:raam_dhulaai/src/home/views/pages.dart';
+import 'package:raam_dhulaai/src/map_view/views/views.dart';
 
 @AdaptiveAutoRouter(
   replaceInRouteName: 'View,Route',

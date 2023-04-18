@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gharelu/src/chat/data_source/chat_data_source.dart';
-import 'package:gharelu/src/chat/providers/chat_list_provider.dart';
-import 'package:gharelu/src/core/extensions/context_extension.dart';
-import 'package:gharelu/src/core/providers/firbease_provider.dart';
-import 'package:gharelu/src/core/routes/app_router.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/chat/data_source/chat_data_source.dart';
+import 'package:raam_dhulaai/src/chat/providers/chat_list_provider.dart';
+import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
+import 'package:raam_dhulaai/src/core/providers/firbease_provider.dart';
+import 'package:raam_dhulaai/src/core/routes/app_router.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ChatListView extends StatefulHookConsumerWidget {

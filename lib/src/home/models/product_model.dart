@@ -2,8 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gharelu/src/home/models/category_model.dart';
 import 'package:gharelu/src/home/models/service_model.dart';
 
-part 'product_model.g.dart';
 part 'product_model.freezed.dart';
+part 'product_model.gel.freezed.dart';
 
 @freezed
 class ProductModel with _$ProductModel {
@@ -25,8 +25,7 @@ class ProductModel with _$ProductModel {
     ServiceModel? service,
   }) = _ProductModel;
 
-  factory ProductModel.fromJson(Map<String, dynamic> json) =>
-      _$ProductModelFromJson(json);
+  factory ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);
 
   factory ProductModel.empty() {
     final now = DateTime.now().millisecondsSinceEpoch;

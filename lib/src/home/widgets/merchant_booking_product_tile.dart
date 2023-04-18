@@ -1,22 +1,21 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gharelu/src/core/assets/assets.gen.dart';
-import 'package:gharelu/src/core/enum/order_type.dart';
-import 'package:gharelu/src/core/extensions/date_time_extension.dart';
-import 'package:gharelu/src/core/extensions/extensions.dart';
-import 'package:gharelu/src/core/theme/app_colors.dart';
-import 'package:gharelu/src/core/theme/app_styles.dart';
-import 'package:gharelu/src/core/widgets/widgets.dart';
-import 'package:gharelu/src/home/models/booking_model.dart';
-import 'package:gharelu/src/home/providers/get_merchant_bookings_provider.dart';
-import 'package:gharelu/src/home/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/core/assets/assets.gen.dart';
+import 'package:raam_dhulaai/src/core/enum/order_type.dart';
+import 'package:raam_dhulaai/src/core/extensions/date_time_extension.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
+import 'package:raam_dhulaai/src/home/models/booking_model.dart';
+import 'package:raam_dhulaai/src/home/providers/get_merchant_bookings_provider.dart';
+import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class MerchantBookingProductTile extends StatelessWidget {
-  const MerchantBookingProductTile({Key? key, required this.booking})
-      : super(key: key);
+  const MerchantBookingProductTile({Key? key, required this.booking}) : super(key: key);
   final BookingModel booking;
 
   @override
@@ -140,10 +139,7 @@ class MerchantBookingProductTile extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              onChanged: (value) => ref
-                                  .read(
-                                      getMerchantBookingsStateProvider.notifier)
-                                  .updateBookings(
+                              onChanged: (value) => ref.read(getMerchantBookingsStateProvider.notifier).updateBookings(
                                     bookingId: booking.id,
                                     orderType: value!,
                                   ),
@@ -161,8 +157,7 @@ class MerchantBookingProductTile extends StatelessWidget {
                                 const DropdownMenuItem(
                                   child: Text(
                                     'Cancel',
-                                    style:
-                                        TextStyle(color: AppColors.errorColor),
+                                    style: TextStyle(color: AppColors.errorColor),
                                   ),
                                   value: OrderType.Cancelled,
                                 ),
@@ -177,8 +172,7 @@ class MerchantBookingProductTile extends StatelessWidget {
               ],
             ),
             Theme(
-              data:
-                  Theme.of(context).copyWith(dividerColor: Colors.transparent),
+              data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
               child: ExpansionTile(
                 tilePadding: EdgeInsets.zero,
                 title: const Text('Payment Info'),
@@ -210,6 +204,3 @@ class MerchantBookingProductTile extends StatelessWidget {
     );
   }
 }
-
-
-

@@ -1,6 +1,6 @@
-import 'package:gharelu/src/core/extensions/date_time_extension.dart';
-import 'package:gharelu/src/core/state/app_state.dart';
-import 'package:gharelu/src/home/data_source/booking_data_source.dart';
+import 'package:raam_dhulaai/src/core/extensions/date_time_extension.dart';
+import 'package:raam_dhulaai/src/core/state/app_state.dart';
+import 'package:raam_dhulaai/src/home/data_source/booking_data_source.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class SlotNotifier extends StateNotifier<AppState<List<String>>> {
