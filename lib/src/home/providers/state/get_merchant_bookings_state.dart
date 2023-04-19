@@ -1,6 +1,4 @@
-
 part of '../get_merchant_bookings_provider.dart';
-
 
 @freezed
 class GetMerchantBookingsState with _$GetMerchantBookingsState {
@@ -14,9 +12,6 @@ class GetMerchantBookingsState with _$GetMerchantBookingsState {
     required List<BookingModel> previous,
     required List<BookingModel> upcoming,
   }) = _Success;
-
-  
-
 
   const factory GetMerchantBookingsState.error({
     required String message,

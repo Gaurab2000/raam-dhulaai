@@ -13,6 +13,7 @@ class ProductModel with _$ProductModel {
     required String categoryId,
     required int createdAt,
     required String description,
+    n,
     required String image,
     required String name,
     required int price,
