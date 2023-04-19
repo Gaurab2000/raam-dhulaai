@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:raam_dhulaai/src/core/enum/order_type.dart';
-import 'package:raam_dhulaai/src/core/state/app_state.dart';
 import 'package:raam_dhulaai/src/home/data_source/booking_data_source.dart';
 import 'package:raam_dhulaai/src/home/models/booking_model.dart';
 
@@ -64,3 +63,21 @@ final getMerchantBookingsStateProvider =
     ref.read(bookingDataSourceProvider),
   )..getMerchantBookings();
 });
+
+@freezed
+class GetMerchantBookingsState with _$GetMerchantBookingsState {
+  const factory GetMerchantBookingsState.initial() = _Initial;
+
+  const factory GetMerchantBookingsState.loading() = _Loading;
+
+  const factory GetMerchantBookingsState.noInternet() = _NoInternet;
+
+  const factory GetMerchantBookingsState.success({
+    required List<BookingModel> previous,
+    required List<BookingModel> upcoming,
+  }) = _Success;
+
+  const factory GetMerchantBookingsState.error({
+    required String message,
+  }) = _Error;
+}
