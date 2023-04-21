@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:raam_dhulaai/src/app/provider/auth_status_provider.dart';
@@ -11,6 +12,7 @@ import 'package:raam_dhulaai/src/core/routes/app_router.dart';
 import 'package:raam_dhulaai/src/core/state/app_state.dart';
 import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
 import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/core/widgets/title_animation_widget.dart';
 import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
 
 class SplashView extends HookConsumerWidget {
@@ -80,14 +82,17 @@ class SplashView extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Spacer(),
-            Assets.images.logo.image(),
+            Assets.images.machine
+                .image()
+                .animate()
+                .shimmer(duration: 1800.ms, delay: 400.ms)
+                .shake(hz: 2, curve: Curves.easeInOutCubic)
+                .scaleXY(end: 1.1, duration: 600.ms, begin: 0.5)
+                .then(delay: 800.ms)
+                .scaleXY(end: 1 / 1.1), // inherits the delay & duration from move,
+            TitleAnimationWidget(),
             const Spacer(),
-            Text(
-              'Have a Problem \nyou cannot solve?\nDon\'t worry. Lets Get started',
-              textAlign: TextAlign.center,
-              style: AppStyles.text18PxMedium.white,
-            ),
-            const Spacer(),
+
             Consumer(builder: (context, ref, _) {
               return ref.watch(authStatusNotifierProvider).maybeWhen(
                     orElse: () => buildButton(ref, context),

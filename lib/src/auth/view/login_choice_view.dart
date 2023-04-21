@@ -13,7 +13,7 @@ class LoginChoiceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: AppColors.darkBlurColor,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -40,8 +40,7 @@ class LoginChoiceView extends StatelessWidget {
               30.verticalSpace,
               CustomButton(
                 title: 'Provide Service',
-                onPressed: () =>
-                    context.router.push(const MerchantLoginRoute()),
+                onPressed: () => context.router.push(const MerchantLoginRoute()),
                 isDisabled: false,
                 backgroundColor: AppColors.whiteColor,
                 titleStyle: AppStyles.text14PxMedium.softBlack,

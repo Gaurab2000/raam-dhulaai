@@ -3,6 +3,7 @@ import 'package:raam_dhulaai/src/home/models/category_model.dart';
 import 'package:raam_dhulaai/src/home/models/service_model.dart';
 
 part 'product_model.freezed.dart';
+part 'product_model.g.dart';
 
 @freezed
 class ProductModel with _$ProductModel {

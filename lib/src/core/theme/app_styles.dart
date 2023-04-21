@@ -206,6 +206,11 @@ class AppStyles {
         fontWeight: FontWeight.bold,
       );
 
+  static TextStyle get text36PxBold => TextStyle(
+        fontSize: 36.sp,
+        fontWeight: FontWeight.bold,
+      );
+
   static TextStyle get text26PxBold => TextStyle(
         fontSize: 26.sp,
         fontWeight: FontWeight.bold,

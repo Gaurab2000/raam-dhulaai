@@ -35,6 +35,17 @@ class ServiceRemoteSource implements _ServiceRemoteSource {
   @override
   Future<Either<AppError, List<CategoryModel>>> getCategories() async {
     try {
+      // final id = _reader.read(firestoreProvider).collection(AppConstant.categories).doc().id;
+      // final now = DateTime.now().millisecondsSinceEpoch;
+      // await _reader.read(firestoreProvider).collection(AppConstant.categories).doc(id).set(CategoryModel(
+      //         id: id,
+      //         name: 'Dying',
+      //         image:
+      //             'https://images.unsplash.com/photo-1585751092218-cea84c1ecf01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+      //         createdAt: now,
+      //         updatedAt: now,
+      //         enable: true)
+      //     .toJson());
       final response = await _reader.read(firestoreProvider).collection(AppConstant.categories).get();
       if (response.docs.isNotEmpty) {
         final _service =
@@ -49,10 +60,27 @@ class ServiceRemoteSource implements _ServiceRemoteSource {
     }
   }
 
+  Future<void> addAllService(Ref reader) async {
+    final id = reader.read(firestoreProvider).collection(AppConstant.services).doc().id;
+    await reader.read(firestoreProvider).collection(AppConstant.services).doc(id).set(ServiceModel(
+            id: id,
+            name: 'Tshirts',
+            image:
+                "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+            merchantId: "rfpyLR7SBgM4uZhXHHlCmD8omXW2",
+            createdAt: DateTime.now().millisecondsSinceEpoch,
+            enable: true,
+            isPromoted: true,
+            updatedAt: DateTime.now().millisecondsSinceEpoch,
+            categoryId: "Y2x2QZrF3vNOiHOn8Z6T")
+        .toJson());
+  }
+
   @override
   Future<Either<AppError, List<ServiceModel>>> getServices({String? id, bool merchantOnly = false}) async {
     try {
       // await addAllServices(_reader);
+      // await addAllService(_reader);
       late QuerySnapshot<Map<String, dynamic>> response;
       if (merchantOnly) {
         final uid = _reader.read(firebaseAuthProvider).currentUser?.uid;

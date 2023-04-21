@@ -47,6 +47,8 @@ dependencies:
   flutter_native_splash: ^2.2.16
   get_it: ^7.2.0
   flutter_dotenv: ^5.0.2
+  google_fonts: ^3.0.1
+  flutter_animate: ^3.0.0
 
 dev_dependencies:
   auto_route_generator: ^5.0.3
@@ -82,9 +84,9 @@ flutter:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/raam_dhulaai_logo.jpg"
+  image_path: "assets/icons/app_icon.png"
   min_sdk_android: 21
 
 flutter_native_splash:
   color: '#7210FF'
-  image: "assets/images/raam_dhulaai_logo.jpg"
+  image: "assets/images/logo.jpg"

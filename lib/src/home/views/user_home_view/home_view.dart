@@ -3,18 +3,19 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
 import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
 import 'package:raam_dhulaai/src/core/providers/firbease_provider.dart';
 import 'package:raam_dhulaai/src/core/routes/app_router.gr.dart';
 import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/widgets/title_animation_widget.dart';
 import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
 import 'package:raam_dhulaai/src/home/providers/banner_provider.dart';
 import 'package:raam_dhulaai/src/home/providers/get_user_info_provider.dart';
 import 'package:raam_dhulaai/src/home/providers/service_provider.dart';
 import 'package:raam_dhulaai/src/home/widgets/search_services.dart';
 import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomeView extends StatefulHookConsumerWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -40,10 +41,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
         slivers: [
           SliverAppBar(
             backgroundColor: AppColors.primaryColor,
-            title: const Text(
-              'raam_dhulaai App',
-              style: TextStyle(color: AppColors.whiteColor),
-            ),
+            title: TitleAnimationWidget(),
             expandedHeight: 150.h,
             snap: true,
             floating: true,

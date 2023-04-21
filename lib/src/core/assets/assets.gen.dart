@@ -15,6 +15,9 @@ import 'package:lottie/lottie.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/app_icon.png
+  AssetGenImage get appIcon => const AssetGenImage('assets/icons/app_icon.png');
+
   /// File path: assets/icons/chat.svg
   SvgGenImage get chat => const SvgGenImage('assets/icons/chat.svg');
 
@@ -44,7 +47,8 @@ class $AssetsIconsGen {
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [
+  List<dynamic> get values => [
+        appIcon,
         chat,
         clockIcon,
         deleteIcon,
@@ -73,6 +77,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
+  /// File path: assets/images/machine.png
+  AssetGenImage get machine => const AssetGenImage('assets/images/machine.png');
+
   /// File path: assets/images/map.png
   AssetGenImage get map => const AssetGenImage('assets/images/map.png');
 
@@ -87,8 +94,17 @@ class $AssetsImagesGen {
   AssetGenImage get welcome => const AssetGenImage('assets/images/welcome.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [babr, esewaLogo, ghareluLogo, logo, map, market, userAvatar, welcome];
+  List<AssetGenImage> get values => [
+        babr,
+        esewaLogo,
+        ghareluLogo,
+        logo,
+        machine,
+        map,
+        market,
+        userAvatar,
+        welcome
+      ];
 }
 
 class $AssetsLottieGen {
