@@ -34,7 +34,6 @@ class SplashView extends HookConsumerWidget {
           context.showSnackbar(message: 'Welcome Back ${data.name}');
           if (data.isMerchant) {
             /// navigate to merchant
-            ///
             context.router.replaceAll([const MerchantDashboardRouter()]);
           } else {
             context.router.replaceAll([const DashboardRouter()]);

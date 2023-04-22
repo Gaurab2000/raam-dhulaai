@@ -114,7 +114,7 @@ class CreateProductView extends HookConsumerWidget {
           children: [
             20.verticalSpace,
             Text(
-              'Let\'s start your Product to raam_dhulaai App. Complete basic Information and you are Ready to Accept Offers',
+              'Let\'s start your Product to Raam-Dhulaai App. Complete basic Information and you are Ready to Accept Offers',
               style: AppStyles.text14PxMedium.copyWith(color: AppColors.softBlack.withOpacity(.5)),
             ),
             20.verticalSpace,

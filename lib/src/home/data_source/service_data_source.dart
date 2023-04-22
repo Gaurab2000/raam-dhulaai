@@ -237,16 +237,18 @@ class ServiceRemoteSource implements _ServiceRemoteSource {
         await ref.doc(product.id).update(product.toJson());
       } else {
         final doc = ref.doc().id;
-        await ref.doc(doc).set(product
-            .copyWith(
-              merchantId: currentUser!.uid,
-              category: null,
-              updatedAt: now,
-              createdAt: now,
-              id: doc,
-              image: url!,
-            )
-            .toJson());
+        await ref.doc(doc).set(
+              product
+                  .copyWith(
+                    merchantId: currentUser!.uid,
+                    category: null,
+                    updatedAt: now,
+                    createdAt: now,
+                    id: doc,
+                    image: url!,
+                  )
+                  .toJson(),
+            );
       }
       return right(product);
     } on FirebaseAuthException catch (e) {

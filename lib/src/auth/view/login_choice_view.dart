@@ -13,7 +13,7 @@ class LoginChoiceView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.darkBlurColor,
+      backgroundColor: Colors.orange.shade400,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -24,7 +24,7 @@ class LoginChoiceView extends StatelessWidget {
               Assets.images.logo.image(),
               const Spacer(),
               Text(
-                'Have a Problem you cannot solve? Don\'t worry. Lets Get started',
+                'A Complete Laundry Solutions',
                 textAlign: TextAlign.center,
                 style: AppStyles.text18PxMedium.white,
               ),
