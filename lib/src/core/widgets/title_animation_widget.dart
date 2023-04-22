@@ -15,7 +15,7 @@ class TitleAnimationWidget extends StatelessWidget {
         Text(
           "Raam-",
           style: AppStyles.text36PxBold
-              .copyWith(fontSize: 42, color: AppColors.redColor, fontFamily: GoogleFonts.kaushanScript().fontFamily),
+              .copyWith(fontSize: 42, color: AppColors.whiteColor, fontFamily: GoogleFonts.kaushanScript().fontFamily),
         ),
         Text(
           "Dhulaai",

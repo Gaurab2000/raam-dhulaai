@@ -47,11 +47,15 @@ class CustomProductCard extends StatelessWidget {
                     // const Spacer(),
                     image.isNotEmpty
                         ? Expanded(
-                            child: CacheImageViewer(
-                              imageUrl: image,
-                              width: double.infinity,
-                              fit: BoxFit.cover,
-                              height: 100.h,
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.only(topRight: Radius.circular(6), topLeft: Radius.circular(6)),
+                              child: CacheImageViewer(
+                                imageUrl: image,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                                height: 100.h,
+                              ),
                             ),
                             flex: 5,
                           )

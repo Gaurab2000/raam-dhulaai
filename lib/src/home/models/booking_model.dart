@@ -23,6 +23,7 @@ class BookingModel with _$BookingModel {
     required int updatedAt,
     required String userId,
     required String merchantId,
+    String? location,
     ProductModel? product,
     CustomUserModel? user,
     CustomUserModel? merchantUser,

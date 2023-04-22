@@ -64,15 +64,14 @@ class ServiceRemoteSource implements _ServiceRemoteSource {
     final id = reader.read(firestoreProvider).collection(AppConstant.services).doc().id;
     await reader.read(firestoreProvider).collection(AppConstant.services).doc(id).set(ServiceModel(
             id: id,
-            name: 'Tshirts',
-            image:
-                "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
-            merchantId: "rfpyLR7SBgM4uZhXHHlCmD8omXW2",
+            name: 'Ironing with fragrance',
+            image: "https://inthewash.co.uk/wp-content/uploads/2022/01/own-scented-ironing-water.jpg",
+            merchantId: "LWY05AbHgMfu2ooqryHCknzf84U2",
             createdAt: DateTime.now().millisecondsSinceEpoch,
             enable: true,
             isPromoted: true,
             updatedAt: DateTime.now().millisecondsSinceEpoch,
-            categoryId: "Y2x2QZrF3vNOiHOn8Z6T")
+            categoryId: "v4CTLxIm5Wi5WVePfRcV")
         .toJson());
   }
 

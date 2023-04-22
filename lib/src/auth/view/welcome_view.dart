@@ -23,7 +23,7 @@ class WelcomeView extends StatelessWidget {
               Text('Welcome!', style: AppStyles.text30PxBold.softBlack),
               const Spacer(),
               Text(
-                'Have a Problem \nyou cannot solve?\nDon\'t worry. Lets Get started',
+                "We clean\nso you don't have to",
                 textAlign: TextAlign.center,
                 style: AppStyles.text18PxMedium.midGrey,
               ),

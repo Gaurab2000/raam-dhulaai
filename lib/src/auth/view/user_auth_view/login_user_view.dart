@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:raam_dhulaai/src/auth/providers/forms/login/user_login_form_provider.dart';
 import 'package:raam_dhulaai/src/auth/providers/user_login_provider.dart';
 import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
@@ -9,7 +10,6 @@ import 'package:raam_dhulaai/src/core/routes/app_router.dart';
 import 'package:raam_dhulaai/src/core/state/app_state.dart';
 import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
 import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class LoginUserView extends HookConsumerWidget {
   const LoginUserView({Key? key}) : super(key: key);
@@ -51,16 +51,10 @@ class LoginUserView extends HookConsumerWidget {
               Consumer(
                 builder: (context, ref, child) {
                   return CustomTextField(
-                    onChanged: (email) => ref
-                        .read(userLoginFormProvider.notifier)
-                        .setEmail(email),
+                    onChanged: (email) => ref.read(userLoginFormProvider.notifier).setEmail(email),
                     title: 'Email',
                     textInputType: TextInputType.emailAddress,
-                    error: ref
-                        .watch(userLoginFormProvider)
-                        .form
-                        .email
-                        .errorMessage,
+                    error: ref.watch(userLoginFormProvider).form.email.errorMessage,
                     controller: _email,
                   );
                 },
@@ -68,12 +62,9 @@ class LoginUserView extends HookConsumerWidget {
               30.verticalSpace,
               CustomTextField(
                 title: 'Password',
-                onChanged: (password) => ref
-                    .read(userLoginFormProvider.notifier)
-                    .setPassword(password),
+                onChanged: (password) => ref.read(userLoginFormProvider.notifier).setPassword(password),
                 isPassword: true,
-                error:
-                    ref.watch(userLoginFormProvider).form.password.errorMessage,
+                error: ref.watch(userLoginFormProvider).form.password.errorMessage,
                 controller: _password,
                 textInputType: TextInputType.visiblePassword,
               ),
@@ -81,11 +72,10 @@ class LoginUserView extends HookConsumerWidget {
               Align(
                 child: CustomButton(
                   isDisabled: !ref.watch(userLoginFormProvider).form.isValid,
-                  onPressed: () =>
-                      ref.read(userLoginProvider.notifier).loginAsUser(
-                            email: _email.text,
-                            password: _password.text,
-                          ),
+                  onPressed: () => ref.read(userLoginProvider.notifier).loginAsUser(
+                        email: _email.text.trim(),
+                        password: _password.text,
+                      ),
                   title: 'Sign in',
                   loading: ref.watch(userLoginProvider).maybeWhen(
                         orElse: () => false,
@@ -103,8 +93,7 @@ class LoginUserView extends HookConsumerWidget {
                     style: AppStyles.text14PxRegular.midGrey,
                   ),
                   TextButton(
-                    onPressed: () =>
-                        context.router.push(const UserSignupRoute()),
+                    onPressed: () => context.router.push(const UserSignupRoute()),
                     child: const Text('Signup'),
                   ),
                 ],

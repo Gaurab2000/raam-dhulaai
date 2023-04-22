@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:raam_dhulaai/src/core/assets/assets.gen.dart';
 import 'package:raam_dhulaai/src/core/enum/order_type.dart';
 import 'package:raam_dhulaai/src/core/extensions/date_time_extension.dart';
@@ -11,8 +12,6 @@ import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
 import 'package:raam_dhulaai/src/home/models/booking_model.dart';
 import 'package:raam_dhulaai/src/home/providers/get_merchant_bookings_provider.dart';
 import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class MerchantBookingProductTile extends StatelessWidget {
   const MerchantBookingProductTile({Key? key, required this.booking}) : super(key: key);
@@ -52,6 +51,15 @@ class MerchantBookingProductTile extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
+                          Container(
+                            height: 20,
+                            width: ScreenUtil.defaultSize.width * 0.6,
+                            child: ListView(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              children: [Text("Address: ${booking.user?.location ?? "Lalitpur, Nepal"}")],
+                            ),
+                          )
                         ],
                       ),
                     ],
