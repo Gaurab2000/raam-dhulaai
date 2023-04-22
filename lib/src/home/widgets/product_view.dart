@@ -1,9 +1,9 @@
-import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
-import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:raam_dhulaai/src/core/assets/assets.gen.dart';
+import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
 import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
 import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
 
 class CustomProductCard extends StatelessWidget {
@@ -44,23 +44,32 @@ class CustomProductCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Spacer(),
+                    // const Spacer(),
                     image.isNotEmpty
-                        ? CacheImageViewer(
-                            imageUrl: image,
-                            fit: BoxFit.cover,
-                            height: 100.h,
+                        ? Expanded(
+                            child: CacheImageViewer(
+                              imageUrl: image,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                              height: 100.h,
+                            ),
+                            flex: 5,
                           )
                         : Assets.images.babr.image(),
-                    const Spacer(),
-                    Text(
-                      name,
-                      style: AppStyles.text18PxMedium.primary,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
+                    // const Spacer(),
+                    Expanded(
+                      flex: 2,
+                      child: Center(
+                        child: Text(
+                          name,
+                          style: AppStyles.text18PxMedium.primary,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     ),
-                    const Spacer(),
+                    // const Spacer(),
                   ],
                 ),
               ),
