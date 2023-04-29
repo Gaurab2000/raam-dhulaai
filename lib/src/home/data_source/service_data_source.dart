@@ -39,9 +39,8 @@ class ServiceRemoteSource implements _ServiceRemoteSource {
       // final now = DateTime.now().millisecondsSinceEpoch;
       // await _reader.read(firestoreProvider).collection(AppConstant.categories).doc(id).set(CategoryModel(
       //         id: id,
-      //         name: 'Dying',
-      //         image:
-      //             'https://images.unsplash.com/photo-1585751092218-cea84c1ecf01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+      //         name: 'Specialized Services',
+      //         image: 'https://media-cdn.tripadvisor.com/media/photo-s/1c/fc/f0/e7/washing-machine-service.jpg',
       //         createdAt: now,
       //         updatedAt: now,
       //         enable: true)
