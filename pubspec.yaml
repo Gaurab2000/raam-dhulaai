@@ -1,7 +1,6 @@
 name: raam_dhulaai
 description: A new Flutter project.
 
-
 version: 1.0.0+0
 
 environment:
@@ -49,6 +48,8 @@ dependencies:
   flutter_dotenv: ^5.0.2
   google_fonts: ^3.0.1
   flutter_animate: ^3.0.0
+  google_mlkit_object_detection: ^0.7.0
+  google_mlkit_smart_reply: ^0.6.0
 
 dev_dependencies:
   auto_route_generator: ^5.0.3
@@ -61,8 +62,8 @@ dev_dependencies:
   very_good_analysis: ^3.0.1
 
 dependency_overrides:
-  ? analyzer
-  ? meta
+  analyzer:
+  meta:
 
 flutter_gen:
   output: lib/src/core/assets/
@@ -71,15 +72,12 @@ flutter_gen:
     lottie: true
 
 flutter:
-
-  
   uses-material-design: true
   assets:
     - assets/images/
     - assets/icons/
     - assets/lottie/
     - .env
-
 
 flutter_icons:
   android: "launcher_icon"
@@ -88,5 +86,5 @@ flutter_icons:
   min_sdk_android: 21
 
 flutter_native_splash:
-  color: '#7210FF'
+  color: "#7210FF"
   image: "assets/images/logo.png"

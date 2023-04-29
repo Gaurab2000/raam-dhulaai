@@ -752,6 +752,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  google_mlkit_commons:
+    dependency: transitive
+    description:
+      name: google_mlkit_commons
+      sha256: "68429fa2e17686819dbaf2344790e3daa59924ef8625dd24f97f9deaaed42767"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0"
+  google_mlkit_object_detection:
+    dependency: "direct main"
+    description:
+      name: google_mlkit_object_detection
+      sha256: ebde4ae04b29fbfe41d91d867bb00003b16d7cd326de765ae87890372bb358a0
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.0"
+  google_mlkit_smart_reply:
+    dependency: "direct main"
+    description:
+      name: google_mlkit_smart_reply
+      sha256: c628e21cf06c3656dd9e038ee24e45cee21bcf89bf0f979c48d65cf82c822776
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.0"
   graphs:
     dependency: transitive
     description:
