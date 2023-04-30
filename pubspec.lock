@@ -936,6 +936,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.1"
+  kommunicate_flutter:
+    dependency: "direct main"
+    description:
+      name: kommunicate_flutter
+      sha256: "509d5b0f1275f4dc572b113193b021ac1aa2464f3f8c0ad13ae1fccb1497b033"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.6.4"
   latlong2:
     dependency: transitive
     description:
