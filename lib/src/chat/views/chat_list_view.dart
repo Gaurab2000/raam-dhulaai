@@ -44,48 +44,45 @@ class _ChatListViewState extends ConsumerState<ChatListView> {
       //       },
       //     ),
       // body: Column(),
+      floatingActionButton: GestureDetector(
+        onTap: () async {
+          try {
+            dynamic conversationObject = {
+              'appId': dotenv.env['KOMMUNICATE_APPID']
+            };
+            dynamic result = await KommunicateFlutterPlugin.buildConversation(
+                conversationObject);
+            print("Conversation builder success : " + result.toString());
+          } on Exception catch (e) {
+            print("Conversation builder error occurred : " + e.toString());
+          }
+        },
+        child: CircleAvatar(
+          child: Icon(Icons.chat),
+        ),
+      ),
       body: ref.watch(chatListNotifierProvider(isMerchant)).maybeWhen(
             orElse: Container.new,
             loading: () => context.loader,
-            success: (data) => Column(
-              children: [
-                GestureDetector(
-                  onTap: ()async{
-                    try {
-     dynamic conversationObject = {
-         'appId': dotenv.env['KOMMUNICATE_APPID'] 
-     };
-      dynamic result = await KommunicateFlutterPlugin.buildConversation(conversationObject);
-      print("Conversation builder success : " + result.toString());
-    } on Exception catch (e) {
-      print("Conversation builder error occurred : " + e.toString());
-    }
-                  },
-                  child: Container(
-                    child: Text('Chat'),
-                  ),
-                ),
-                ListView.builder(
-                  itemCount: data.length,
-                  itemBuilder: (context, index) {
-                    final room = data[index];
-                    return ChatListTile(
-                      imageUrl: '',
-                      name: room.product?.name ?? '',
-                      subtitle: isMerchant
-                          ? (room.user?.name ?? '')
-                          : (room.merchant?.name ?? ''),
-                      onPressed: () => context.router.push(ChatDetailRoute(
-                        product: room.product!,
-                        roomId: room.id,
-                        isMerchant: isMerchant,
-                        merchant: room.merchant,
-                        user: room.user,
-                      )),
-                    );
-                  },
-                ),
-              ],
+            success: (data) => ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (context, index) {
+                final room = data[index];
+                return ChatListTile(
+                  imageUrl: '',
+                  name: room.product?.name ?? '',
+                  subtitle: isMerchant
+                      ? (room.user?.name ?? '')
+                      : (room.merchant?.name ?? ''),
+                  onPressed: () => context.router.push(ChatDetailRoute(
+                    product: room.product!,
+                    roomId: room.id,
+                    isMerchant: isMerchant,
+                    merchant: room.merchant,
+                    user: room.user,
+                  )),
+                );
+              },
             ),
           ),
     );

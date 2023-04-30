@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 import 'package:raam_dhulaai/src/auth/providers/logout_provider.dart';
 import 'package:raam_dhulaai/src/core/assets/assets.gen.dart';
 import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
@@ -66,7 +68,9 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                             GradientCircle(
                               child: CacheImageViewer(
                                 imageUrl: '',
-                                error: (context, url, error) => Assets.images.userAvatar.image(fit: BoxFit.cover),
+                                error: (context, url, error) => Assets
+                                    .images.userAvatar
+                                    .image(fit: BoxFit.cover),
                               ),
                             ),
                             10.verticalSpace,
@@ -92,6 +96,16 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 //   title: 'View Profile',
                 //   onPressed: () {},
                 // ),
+                GestureDetector(
+                  onTap: () async {
+                    
+                  },
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    child: Text('Chat'),
+                  ),
+                ),
                 30.verticalSpace,
                 CardListTile(
                   title: 'Appointments',
@@ -105,14 +119,17 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 20.verticalSpace,
                 CardListTile(
                   title: 'Customer Support',
-                  onPressed: () => context.router.push(const HelpAndSupportRoute()),
+                  onPressed: () =>
+                      context.router.push(const HelpAndSupportRoute()),
                 ),
                 20.verticalSpace,
                 Consumer(
                   builder: (context, ref, _) {
                     return CardListTile(
                       title: 'Logout',
-                      onPressed: () => ref.read(logoutStateNotifierProvider.notifier).logout(),
+                      onPressed: () => ref
+                          .read(logoutStateNotifierProvider.notifier)
+                          .logout(),
                     );
                   },
                 ),
