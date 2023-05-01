@@ -49,6 +49,7 @@ dependencies:
   google_fonts: ^3.0.1
   flutter_animate: ^3.0.0
   kommunicate_flutter: ^1.6.4
+  # google_mlkit_image_labeling: ^0.6.0
   # google_mlkit_object_detection: ^0.7.0
   # google_mlkit_smart_reply: ^0.6.0
 
