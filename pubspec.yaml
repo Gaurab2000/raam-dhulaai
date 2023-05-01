@@ -59,6 +59,7 @@ dev_dependencies:
   freezed: ^2.0.3
   json_serializable: ^6.2.0
   very_good_analysis: ^3.0.1
+  kommunicate_flutter: ^1.6.4
 
 dependency_overrides:
   ? analyzer
