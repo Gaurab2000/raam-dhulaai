@@ -45,7 +45,14 @@ class _ChatListViewState extends ConsumerState<ChatListView> {
       floatingActionButton: GestureDetector(
         onTap: () async {
           try {
-            dynamic conversationObject = {'appId': dotenv.env['KOMMUNICATE_APPID']};
+            dynamic user = {
+              // 'userId': ref.read(getUserInfoNotifiderProvider).maybeWhen(
+              //       orElse: () => '',
+              //       success: (data) => data.uid,
+              //     ), //Replace it with the userId of the logged in user
+              //Put password here if user has password, ignore otherwise
+            };
+            dynamic conversationObject = {'appId': dotenv.env['KOMMUNICATE_APPID'], 'isSingleConversation': false};
             dynamic result = await KommunicateFlutterPlugin.buildConversation(conversationObject);
             print("Conversation builder success : " + result.toString());
           } on Exception catch (e) {
