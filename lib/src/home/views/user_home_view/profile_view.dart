@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_mlkit_image_labeling/google_mlkit_image_labeling.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:logger/logger.dart';
 import 'package:raam_dhulaai/src/auth/providers/logout_provider.dart';
+import 'package:raam_dhulaai/src/chat/image_label.dart';
 import 'package:raam_dhulaai/src/core/assets/assets.gen.dart';
 import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
 import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
@@ -12,7 +17,6 @@ import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
 import 'package:raam_dhulaai/src/home/providers/get_user_info_provider.dart';
 import 'package:raam_dhulaai/src/home/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProfileView extends StatefulHookConsumerWidget {
   const ProfileView({Key? key, required this.onAppoinment}) : super(key: key);
@@ -107,6 +111,23 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                   title: 'Customer Support',
                   onPressed: () => context.router.push(const HelpAndSupportRoute()),
                 ),
+                20.verticalSpace,
+                CardListTile(
+                    title: "AI cloth recognition",
+                    onPressed: () async {
+                      final picker = await ImagePicker().pickImage(source: ImageSource.gallery);
+                      if (picker != null) {
+                        final InputImage inputImage = InputImage.fromFilePath(picker.path);
+                        final List<ImageLabel> labels =
+                            await ImageLabelAlgorithm.instance.getImageLabels(inputImage: inputImage);
+                        for (ImageLabel l in labels) {
+                          Logger().i(l.label);
+                          Logger().i(l.confidence);
+                          Logger().i(l.index);
+                          Logger().i("========================");
+                        }
+                      }
+                    }),
                 20.verticalSpace,
                 Consumer(
                   builder: (context, ref, _) {
