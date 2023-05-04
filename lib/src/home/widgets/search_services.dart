@@ -70,6 +70,8 @@ class CustomSearchServices extends SearchDelegate {
                     //       snapshot: suggestionData[index],
                     //     ));
                   },
+
+                  /// TODO: suggestions dynamic
                   child: SuggestionChip(
                     foodName: 'Name',
                   ),
@@ -116,8 +118,8 @@ class CustomSearchServices extends SearchDelegate {
                     //     ));
                   },
                   child: Text(
-                    'Namee',
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                    suggestionData[index]['name'].toString(),
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
                   ),
                 ),
                 SizedBox(
@@ -133,7 +135,7 @@ class CustomSearchServices extends SearchDelegate {
 
   Future getSuggestionFromFirebase() async {
     print('firebase called');
-    var documentCollection = await fireStore.collection('recipes').get();
+    var documentCollection = await fireStore.collection('products').get();
     suggestionData = documentCollection.docs.where((element) {
       if (element['name'].toString().toLowerCase().trim().contains(query)) {
         return true;
