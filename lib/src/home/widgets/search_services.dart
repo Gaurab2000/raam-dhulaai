@@ -1,73 +1,171 @@
-import 'package:algolia_helper_flutter/algolia_helper_flutter.dart';
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
-import 'package:raam_dhulaai/src/core/routes/app_router.dart';
-import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
-import 'package:raam_dhulaai/src/home/models/category_model.dart';
+import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
+import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
 
 class CustomSearchServices extends SearchDelegate {
-  CustomSearchServices(this.searcher);
-
-  final HitsSearcher searcher;
+  FirebaseFirestore fireStore = FirebaseFirestore.instance;
+  List suggestionData = [];
+  Timer? _debounce;
 
   @override
-  List<Widget>? buildActions(BuildContext context) {
-    return [];
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      InkWell(
+        onTap: () {
+          query = '';
+        },
+        child: Center(
+          child: Icon(
+            Icons.clear,
+            color: Colors.grey,
+          ),
+        ),
+      ),
+      SizedBox(
+        width: 15,
+      ),
+    ];
   }
 
   @override
-  Widget? buildLeading(BuildContext context) {
-    return const BackButton();
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    searcher.query(query);
-    return Container();
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10.0, right: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Search Suggestion',
+              textAlign: TextAlign.start,
+              style: AppStyles.text20PxSemiBold,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Wrap(
+              children: List.generate(suggestionData.length, (index) {
+                return InkWell(
+                  onTap: () {
+                    // Navigation.changeScreen(
+                    //     context,
+                    //     CookingScreen(
+                    //       snapshot: suggestionData[index],
+                    //     ));
+                  },
+                  child: SuggestionChip(
+                    foodName: 'Name',
+                  ),
+                );
+              }),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    searcher..query(query);
+    print('build suggestion called');
+    if (_debounce?.isActive ?? false) _debounce?.cancel();
 
-    return StreamBuilder(
-      stream: searcher.responses,
-      builder: (context, AsyncSnapshot<SearchResponse> snapshot) {
-        print(snapshot);
-        final response = snapshot.data;
-        final hits = response?.hits.toList() ?? [];
-        return ListView.builder(
-          itemCount: hits.length,
-          itemBuilder: (context, index) {
-            final hit = hits[index];
+    /// Debouncing implemented to prevent app from calling firebase
+    /// for ever single letter search
 
-            return ListTile(
-              leading: GradientCircle(
-                radius: 40,
-                child: CacheImageViewer(imageUrl: (hit['image'] as String?)),
-              ),
-              onTap: () => context.router.push(
-                CategoryRoute(
-                  category: CategoryModel(
-                    id: hit['category_id'].toString(),
-                    name: hit['name'].toString(),
-                    image: hit['image'].toString(),
-                    createdAt: hit['created_at'] as int,
-                    updatedAt: hit['1672337769716'] as int,
-                    enable: true,
+    _debounce = Timer(const Duration(milliseconds: 100), () {
+      /// now app will call getSuggestionFromFirebase() after 500ms of user typing
+      getSuggestionFromFirebase();
+    });
+    return ListView.builder(
+        itemCount: suggestionData.length,
+        itemBuilder: (BuildContext context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                InkWell(
+                  onTap: () {
+                    // Navigation.changeScreen(
+                    //     context,
+                    //     CookingScreen(
+                    //       snapshot: suggestionData[index],
+                    //     ));
+                  },
+                  child: Text(
+                    'Namee',
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                   ),
                 ),
-              ),
-              title: RichText(
-                  text: TextSpan(
-                style: Theme.of(context).textTheme.titleSmall,
-                children: hit.getHighlightedString('name').toInlineSpans(),
-              )),
-            ).py(12.h);
-          },
-        );
-      },
+                SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+          );
+        });
+
+    // throw UnimplementedError();
+  }
+
+  Future getSuggestionFromFirebase() async {
+    print('firebase called');
+    var documentCollection = await fireStore.collection('recipes').get();
+    suggestionData = documentCollection.docs.where((element) {
+      if (element['name'].toString().toLowerCase().trim().contains(query)) {
+        return true;
+      } else
+        return false;
+    }).toList();
+  }
+}
+
+class SuggestionChip extends StatelessWidget {
+  final String foodName;
+
+  SuggestionChip({this.foodName = ''});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      decoration: BoxDecoration(
+        color: AppColors.primaryColor,
+        border: Border.all(color: AppColors.primaryColor.withOpacity(0.5), width: 3),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Text(
+        foodName,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
   }
 }
