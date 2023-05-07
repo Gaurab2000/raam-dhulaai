@@ -56,7 +56,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                   );
                   showSearch(
                     context: context,
-                    delegate: CustomSearchServices(searcher),
+                    delegate: CustomSearchServices(),
                   );
                 },
               ),

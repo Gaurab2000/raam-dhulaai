@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:raam_dhulaai/src/auth/providers/logout_provider.dart';
 import 'package:raam_dhulaai/src/core/assets/assets.gen.dart';
 import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
@@ -12,7 +13,6 @@ import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
 import 'package:raam_dhulaai/src/home/providers/get_user_info_provider.dart';
 import 'package:raam_dhulaai/src/home/widgets/bottom_sheet/bottom_sheet.dart';
 import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProfileView extends StatefulHookConsumerWidget {
   const ProfileView({Key? key, required this.onAppoinment}) : super(key: key);
@@ -107,6 +107,10 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                   title: 'Customer Support',
                   onPressed: () => context.router.push(const HelpAndSupportRoute()),
                 ),
+
+                20.verticalSpace,
+                CardListTile(
+                    title: "AI cloth recognition", onPressed: () => context.router.push(const ClothRecognitionRoute())),
                 20.verticalSpace,
                 Consumer(
                   builder: (context, ref, _) {

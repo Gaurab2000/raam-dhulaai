@@ -1,17 +1,15 @@
 import 'dart:io';
 
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:raam_dhulaai/src/core/state/app_form_state.dart';
 import 'package:raam_dhulaai/src/core/validations/field.dart';
 import 'package:raam_dhulaai/src/home/entities/create_product_entity.dart';
 import 'package:raam_dhulaai/src/home/models/category_model.dart';
 import 'package:raam_dhulaai/src/home/models/product_model.dart';
 import 'package:raam_dhulaai/src/home/models/service_model.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class CreateProductFormNotifier
-    extends StateNotifier<AppFormState<CreateProductEntity>> {
-  CreateProductFormNotifier()
-      : super(AppFormState(CreateProductEntity.empty()));
+class CreateProductFormNotifier extends StateNotifier<AppFormState<CreateProductEntity>> {
+  CreateProductFormNotifier() : super(AppFormState(CreateProductEntity.empty()));
 
   void setProduct(ProductModel product) {
     setName(product.name);
@@ -26,21 +24,21 @@ class CreateProductFormNotifier
     }
     final _state = state;
     state = _state.copyWith(
-        form: _state.form.copyWith(
-      categoryId: product.categoryId,
-      imageUrl: product.image,
-      id: product.id,
-      merchantId: product.merchantId,
-      publish: product.unPublish,
-      serviceId: product.serviceId,
-    ));
+      form: _state.form.copyWith(
+        categoryId: product.categoryId,
+        imageUrl: product.image,
+        id: product.id,
+        merchantId: product.merchantId,
+        publish: product.unPublish,
+        serviceId: product.serviceId,
+      ),
+    );
   }
 
   void setService(CategoryModel category) {
     final _state = state;
     var form = state.form;
-    state = _state.copyWith(
-        form: form.copyWith(category: category, categoryId: category.id));
+    state = _state.copyWith(form: form.copyWith(category: category, categoryId: category.id));
   }
 
   void setCategory(ServiceModel service) {
@@ -73,13 +71,11 @@ class CreateProductFormNotifier
           productName: Field(
             value: name,
             isValid: true,
-            warningMessage:
-                'Recommended: Catchy name can be between 10 words to 60 words.',
+            warningMessage: 'Recommended: Catchy name can be between 10 words to 60 words.',
           ),
         );
       } else {
-        form = _state.form
-            .copyWith(productName: Field(value: name, isValid: true));
+        form = _state.form.copyWith(productName: Field(value: name, isValid: true));
       }
     }
     state = state.copyWith(form: form);
@@ -167,8 +163,7 @@ class CreateProductFormNotifier
   void setImage(File file) {
     final _state = state;
     var form = state.form;
-    form =
-        state.form.copyWith(fileImage: Field(value: file.path, isValid: true));
+    form = state.form.copyWith(fileImage: Field(value: file.path, isValid: true));
     state = state.copyWith(form: form);
   }
 
@@ -180,6 +175,6 @@ class CreateProductFormNotifier
   }
 }
 
-final createProductFormNotifierProvider = StateNotifierProvider.autoDispose<
-    CreateProductFormNotifier,
-    AppFormState<CreateProductEntity>>((ref) => CreateProductFormNotifier());
+final createProductFormNotifierProvider =
+    StateNotifierProvider.autoDispose<CreateProductFormNotifier, AppFormState<CreateProductEntity>>(
+        (ref) => CreateProductFormNotifier());

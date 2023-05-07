@@ -123,7 +123,9 @@ class CreateProductView extends HookConsumerWidget {
                 onTap: () async {
                   final picker = await ImagePicker().pickImage(source: ImageSource.gallery);
                   if (picker != null) {
-                    ref.read(createProductFormNotifierProvider.notifier).setImage(File(picker.path));
+                    ref.read(createProductFormNotifierProvider.notifier).setImage(
+                          File(picker.path),
+                        );
                   }
                 },
                 child: Stack(
