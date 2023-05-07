@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:raam_dhulaai/src/core/extensions/context_extension.dart';
 import 'package:raam_dhulaai/src/core/extensions/extensions.dart';
 import 'package:raam_dhulaai/src/core/routes/app_router.dart';
@@ -9,7 +10,6 @@ import 'package:raam_dhulaai/src/core/widgets/widgets.dart';
 import 'package:raam_dhulaai/src/home/models/category_model.dart';
 import 'package:raam_dhulaai/src/home/providers/service_category_provider.dart';
 import 'package:raam_dhulaai/src/home/widgets/widgets.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CategoryView extends StatefulHookConsumerWidget {
   const CategoryView({Key? key, required this.category}) : super(key: key);
@@ -24,9 +24,7 @@ class _CategoryViewState extends ConsumerState<CategoryView> {
   @override
   void didChangeDependencies() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref
-          .read(serviceCategoryStateProvider.notifier)
-          .getServices(categoryId: widget.category.id);
+      ref.read(serviceCategoryStateProvider.notifier).getServices(categoryId: widget.category.id);
     });
     super.didChangeDependencies();
   }
@@ -61,13 +59,15 @@ class _CategoryViewState extends ConsumerState<CategoryView> {
                     (context, index) => CustomProductCard(
                       image: data[index].image,
                       name: data[index].name,
-                      onPressed: () => context.router.push(ProductRoute(
-                        categoryId: data[index].id,
-                        serviceId: data[index].id,
-                        image: data[index].image,
-                        title: data[index].name,
-                        service: data[index],
-                      )),
+                      onPressed: () => context.router.push(
+                        ProductRoute(
+                          categoryId: data[index].id,
+                          serviceId: data[index].id,
+                          image: data[index].image,
+                          title: data[index].name,
+                          service: data[index],
+                        ),
+                      ),
                     ).px(10.w),
                     childCount: data.length,
                   ),

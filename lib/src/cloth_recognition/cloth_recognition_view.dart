@@ -113,16 +113,17 @@ class _ClothRecognitionViewState extends ConsumerState<ClothRecognitionView> {
 
               Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "Label",
-                        style: AppStyles.text18PxSemiBold.copyWith(color: AppColors.primaryColor),
-                      ),
-                      Text("Confidence", style: AppStyles.text18PxSemiBold.copyWith(color: AppColors.primaryColor)),
-                    ],
-                  ),
+                  if (imagePath.isNotEmptyAndNotNull)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "Label",
+                          style: AppStyles.text18PxSemiBold.copyWith(color: AppColors.primaryColor),
+                        ),
+                        Text("Confidence", style: AppStyles.text18PxSemiBold.copyWith(color: AppColors.primaryColor)),
+                      ],
+                    ),
                   20.verticalSpace,
                   if (labels.isNotEmpty)
                     Container(

@@ -2,12 +2,15 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:raam_dhulaai/src/core/routes/app_router.dart';
 import 'package:raam_dhulaai/src/core/theme/app_colors.dart';
 import 'package:raam_dhulaai/src/core/theme/app_styles.dart';
+import 'package:raam_dhulaai/src/home/models/service_model.dart';
 
 class CustomSearchServices extends SearchDelegate {
   FirebaseFirestore fireStore = FirebaseFirestore.instance;
-  List suggestionData = [];
+  List<QueryDocumentSnapshot<Map<String, dynamic>>> suggestionData = [];
   Timer? _debounce;
 
   @override
@@ -64,6 +67,18 @@ class CustomSearchServices extends SearchDelegate {
               children: List.generate(suggestionData.length, (index) {
                 return InkWell(
                   onTap: () {
+                    ServiceModel servModel = ServiceModel.fromJson(suggestionData[index].data());
+                    Logger().i(servModel);
+                    context.router.push(
+                      ProductRoute(
+                        categoryId: servModel.id,
+                        serviceId: servModel.id,
+                        image: servModel.image,
+                        title: servModel.name,
+                        service: servModel,
+                      ),
+                    );
+                    // context.router.push(CategoryRoute(category: catModel));
                     // Navigation.changeScreen(
                     //     context,
                     //     CookingScreen(
@@ -73,7 +88,7 @@ class CustomSearchServices extends SearchDelegate {
 
                   /// TODO: suggestions dynamic
                   child: SuggestionChip(
-                    foodName: 'Name',
+                    foodName: suggestionData[index]['name'].toString(),
                   ),
                 );
               }),
@@ -93,7 +108,7 @@ class CustomSearchServices extends SearchDelegate {
     /// for ever single letter search
 
     _debounce = Timer(const Duration(milliseconds: 100), () {
-      /// now app will call getSuggestionFromFirebase() after 500ms of user typing
+      /// now app will call getSuggestionFromFirebase() after 100ms of user typing
       getSuggestionFromFirebase();
     });
     return ListView.builder(
@@ -111,11 +126,17 @@ class CustomSearchServices extends SearchDelegate {
                 ),
                 InkWell(
                   onTap: () {
-                    // Navigation.changeScreen(
-                    //     context,
-                    //     CookingScreen(
-                    //       snapshot: suggestionData[index],
-                    //     ));
+                    ServiceModel servModel = ServiceModel.fromJson(suggestionData[index].data());
+                    Logger().i(servModel);
+                    context.router.push(
+                      ProductRoute(
+                        categoryId: servModel.id,
+                        serviceId: servModel.id,
+                        image: servModel.image,
+                        title: servModel.name,
+                        service: servModel,
+                      ),
+                    );
                   },
                   child: Text(
                     suggestionData[index]['name'].toString(),
@@ -135,7 +156,7 @@ class CustomSearchServices extends SearchDelegate {
 
   Future getSuggestionFromFirebase() async {
     print('firebase called');
-    var documentCollection = await fireStore.collection('products').get();
+    var documentCollection = await fireStore.collection('services').get();
     suggestionData = documentCollection.docs.where((element) {
       if (element['name'].toString().toLowerCase().trim().contains(query)) {
         return true;
