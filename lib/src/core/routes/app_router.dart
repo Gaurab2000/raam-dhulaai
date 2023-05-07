@@ -1,15 +1,16 @@
-export 'package:auto_route/auto_route.dart';
-
-export 'app_router.gr.dart';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:raam_dhulaai/src/app/views/views.dart';
 import 'package:raam_dhulaai/src/auth/view/pages.dart';
 import 'package:raam_dhulaai/src/chat/views/chat_list_view.dart';
+import 'package:raam_dhulaai/src/cloth_recognition/cloth_recognition_view.dart';
 import 'package:raam_dhulaai/src/home/views/marchent_home_view/merchant_bookings_view.dart';
 import 'package:raam_dhulaai/src/home/views/marchent_home_view/pages.dart';
 import 'package:raam_dhulaai/src/home/views/pages.dart';
 import 'package:raam_dhulaai/src/map_view/views/views.dart';
+
+export 'package:auto_route/auto_route.dart';
+
+export 'app_router.gr.dart';
 
 @AdaptiveAutoRouter(
   replaceInRouteName: 'View,Route',
@@ -21,7 +22,6 @@ import 'package:raam_dhulaai/src/map_view/views/views.dart';
     AutoRoute<void>(page: MerchantSignupView),
     AutoRoute<void>(page: MerchantLoginView),
     AutoRoute<void>(page: WelcomeView),
-
     // map
     AutoRoute<void>(page: MapPickerView),
 
@@ -54,6 +54,7 @@ import 'package:raam_dhulaai/src/map_view/views/views.dart';
       ],
     ),
     AutoRoute<void>(page: CategoryView),
+    AutoRoute<void>(page: ClothRecognitionView),
 
     // chats
     AutoRoute<void>(page: ChatDetailView),
